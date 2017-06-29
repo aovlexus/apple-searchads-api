@@ -1,0 +1,4 @@
+python-decouple
+pandas
+requests
+tqdm
