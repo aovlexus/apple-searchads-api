@@ -55,7 +55,7 @@ As always, when in doubt type `help()` or on any object you want to know more ab
 ```python
 from search_ads.api.search_ads import SearchAds
 
-api = SearchAds("Appvertise")  # Our company account
+api = SearchAds("MyCompany")  # Our company account
 campaign = api.get_campaigns_by_name('Followers Plus')[0]
 ad_group = campaign.get_ad_group_by_name('SubPrime Keywords')
 
