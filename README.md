@@ -62,7 +62,7 @@ ad_group = campaign.get_ad_group_by_name('SubPrime Keywords')
 campaign.name = 'change my name!'
 campaign.save()
 
-ad_group.default_cpc_bid = '0.05'  # Yes, I know, it sucks, but amounts are strings.
+ad_group.default_cpc_bid = '0.05'  # Amounts are strings
 
 ad_group.keywords[0].text += "ss"
 ad_group.keywords[0].bid_amount['amount'] = '0.6'
