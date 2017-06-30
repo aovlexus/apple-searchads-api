@@ -4,7 +4,7 @@
 1) Install the library with pip, running `pip install search_ads`
 2) Go to: https://app.searchads.apple.com/cm/app/settings/apicertificates and download the certificates
 3) Unzip the certificates
-4) Create an in the root of this project a text file called `.env` as follows:
+4) Create in the root of your Python project a text file called `.env` as follows:
 ```
 SEARCH-ADS-PEM='<pem certificate full path>'
 SEARCH-ADS-KEY='<key certificate full path>'
