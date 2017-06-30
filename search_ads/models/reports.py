@@ -3,7 +3,7 @@ from datetime import datetime
 import copy
 import pandas as pd
 
-from search_ads.api.utils import api_post
+from ..api.utils import api_post
 
 
 def _today():
