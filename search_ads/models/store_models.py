@@ -1,7 +1,7 @@
 import json
 
-from ..api.utils import api_put, api_post, set_env
-from .utils import Synchronizable, AppleSerializable, Serializable
+from search_ads.api.utils import api_put, api_post, set_env
+from search_ads.models.utils import Synchronizable, AppleSerializable, Serializable
 
 
 class SyncManager(Serializable):

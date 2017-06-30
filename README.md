@@ -53,7 +53,7 @@ As always, when in doubt type `help()` or on any object you want to know more ab
 
 ## Sample usage
 ```python
-from search_ads.api import SearchAds
+from search_ads import SearchAds
 
 api = SearchAds("MyCompany")  # Our company account
 campaign = api.get_campaigns_by_name('MyCampaing')[0]
@@ -71,7 +71,7 @@ ad_group.save()  # Equivalently: campaign.save(cascade=True)
 
 ## Reports
 ```python
-from search_ads.api import SearchAds
+from search_ads import SearchAds
 
 api = SearchAds("MyCompany")  # Our company account
 campaign = api.get_campaigns_by_name('MyCampaign')[0]
@@ -89,8 +89,8 @@ Output:
 
 ### Create a campaign, an ad group and add a keyword
 ```python
-from search_ads.api import SearchAds
-from search_ads.models import Campaign, Keyword, AdGroup
+from search_ads import SearchAds
+from search_ads import Campaign, Keyword, AdGroup
 
 api = SearchAds("MyCompany")  # Our company account
 
@@ -124,9 +124,9 @@ used for further analysis
 
 
 ```python
-from search_ads.api import SearchAds, DataBase
-from search_ads.api import set_env
-from search_ads.models import Keyword, Campaign, AdGroup, SyncManager
+from search_ads import SearchAds, DataBase
+from search_ads import set_env
+from search_ads import Keyword, Campaign, AdGroup, SyncManager
 
 import pandas as pd
 certs = {
