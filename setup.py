@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name='search_ads',
       version='0.2',
@@ -7,7 +7,7 @@ setup(name='search_ads',
       author='Luca Giacomel',
       author_email='lg@bendingspoons.com',
       license='MIT',
-      packages=['search_ads'],
+      packages=find_packages(),
       install_requires=[
           "python-decouple",
           "pandas",

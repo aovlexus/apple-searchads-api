@@ -5,5 +5,4 @@ __version__ = "0.1.1"
 __maintainer__ = "Luca Giacomel"
 __email__ = "luca.giacomel@gmail.com"
 
-import api
-import models
+from . import api, models
