@@ -1,7 +1,7 @@
 # Apple Search Ads Python API
 ## Install instructions
 
-1) Install requirements by running `$ pip install -r requirements.txt`.
+1) Install the library with pip, running `pip install search_ads`
 2) Go to: https://app.searchads.apple.com/cm/app/settings/apicertificates and download the certificates
 3) Unzip the certificates
 4) Create an in the root of this project a text file called `.env` as follows:
@@ -9,7 +9,7 @@
 SEARCH-ADS-PEM='<pem certificate full path>'
 SEARCH-ADS-KEY='<key certificate full path>'
 ```
-(or alternatively add the variables to your environment)
+Alternatively you can set environment variables or use the `set_env` function as shown in the last example of this page.
 
 ## What can you do now?
 
@@ -53,7 +53,7 @@ As always, when in doubt type `help()` or on any object you want to know more ab
 
 ## Sample usage
 ```python
-from search_ads.api import SearchAds
+from search_ads import SearchAds
 
 api = SearchAds("MyCompany")  # Our company account
 campaign = api.get_campaigns_by_name('MyCampaing')[0]
@@ -71,7 +71,7 @@ ad_group.save()  # Equivalently: campaign.save(cascade=True)
 
 ## Reports
 ```python
-from search_ads.api import SearchAds
+from search_ads import SearchAds
 
 api = SearchAds("MyCompany")  # Our company account
 campaign = api.get_campaigns_by_name('MyCampaign')[0]
@@ -81,16 +81,16 @@ print(api.get_campaign_report(campaign))
 Output:
 ```
      adGroupId        adGroupName  avgCPA  avgCPT  bidAmount  conversionRate  ...
-0      8902378  Generic Keywords     0.0     0.0       0.05             0.0
-1      8902378  Generic Keywords     0.0     0.0       0.05             0.0
-2      8902378  Generic Keywords     0.0     0.0       0.05             0.0
+0      123456  Generic Keywords     0.0     0.0       0.05             0.0
+1      123456  Generic Keywords     0.0     0.0       0.05             0.0
+2      123456  Generic Keywords     0.0     0.0       0.05             0.0
 ...
 ```
 
 ### Create a campaign, an ad group and add a keyword
 ```python
-from search_ads.api import SearchAds
-from search_ads.models import Campaign, Keyword, AdGroup
+from search_ads import SearchAds
+from search_ads import Campaign, Keyword, AdGroup
 
 api = SearchAds("MyCompany")  # Our company account
 
@@ -124,9 +124,9 @@ used for further analysis
 
 
 ```python
-from search_ads.api import SearchAds, DataBase
-from search_ads.api import set_env
-from search_ads.models import Keyword, Campaign, AdGroup, SyncManager
+from search_ads import SearchAds, DataBase
+from search_ads import set_env
+from search_ads import Keyword, Campaign, AdGroup, SyncManager
 
 import pandas as pd
 certs = {
@@ -162,3 +162,7 @@ df = db.reports[campaigns[0]]['keywords']
 df.index = pd.to_datetime(df['date'])
 df.groupby(['keyword', pd.TimeGrouper('D')])[['avgCPA']].mean()
 ```
+
+And read/play with the DataFrame in output.
+
+Enjoy!

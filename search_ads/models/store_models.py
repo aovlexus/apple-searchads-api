@@ -1,7 +1,7 @@
 import json
 
-from ..api.utils import api_put, api_post, set_env
-from .utils import Synchronizable, AppleSerializable, Serializable
+from search_ads.api.utils import api_put, api_post, set_env
+from search_ads.models.utils import Synchronizable, AppleSerializable, Serializable
 
 
 class SyncManager(Serializable):
@@ -166,6 +166,7 @@ class Campaign(Synchronizable, AppleSerializable):
                  displayStatus=None,
                  servingStateReasons=None,
                  negativeKeywords=[],
+                 storefront=[],
                  adGroups=[],
                  modificationTime=None,
                  **kwargs):
@@ -197,6 +198,7 @@ class Campaign(Synchronizable, AppleSerializable):
         self._display_status = displayStatus
         self._serving_state_reasons = servingStateReasons
         self._modification_time = modificationTime
+        self._storefront = storefront
 
         self.name = name
         self.budget_amount = budgetAmount
