@@ -1,11 +1,17 @@
 from setuptools import setup
 
 setup(name='search_ads',
-      version='0.1',
+      version='0.2',
       description='Python wrapper for Apple Search Ads APIs',
       url='https://github.com/BendingSpoons/searchads-api',
       author='Luca Giacomel',
       author_email='lg@bendingspoons.com',
       license='MIT',
       packages=['search_ads'],
+      install_requires=[
+          "python-decouple",
+          "pandas",
+          "requests",
+          "tqdm",
+      ],
       zip_safe=False)

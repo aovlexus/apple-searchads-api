@@ -40,7 +40,7 @@ class Synchronizable(object):
     def set_sync_manager(self, sync_manager):
         self.sync_manager = sync_manager
 
-    def synchronize(self, *args, save_callback=lambda x: x, **kwargs):
+    def synchronize(self, save_callback=lambda x: x, *args, **kwargs):
         if self.sync_manager is not None:
             save_callback(self.to_json())
             self.sync_manager.pending_actions.append(
