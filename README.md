@@ -75,7 +75,7 @@ from search_ads import SearchAds
 
 api = SearchAds("MyCompany")  # Our company account
 campaign = api.get_campaigns_by_name('MyCampaign')[0]
-print(api.get_campaign_report(campaign))
+print(api.get_campaign_adgroups_report(campaign))
 ```
 
 Output:
