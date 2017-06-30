@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='search_ads',
-      version='0.2',
+      version='0.2.1',
       description='Python wrapper for Apple Search Ads APIs',
       url='https://github.com/BendingSpoons/searchads-api',
       author='Luca Giacomel',

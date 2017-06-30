@@ -7,4 +7,5 @@ __email__ = "luca.giacomel@gmail.com"
 
 from search_ads.api.search_ads import SearchAds, DataBase
 from search_ads.api.utils import set_env
-from search_ads.models.store_models import Campaign, AdGroup, Keyword
+from search_ads.models.store_models import Campaign, AdGroup, Keyword, \
+    SyncManager
