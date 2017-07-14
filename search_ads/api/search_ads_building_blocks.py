@@ -12,6 +12,7 @@ from models.reports import _today, \
     get_campaign_searchterms_report as _get_campaign_searchterms_report, \
     get_campaign_adgroups_report as _get_campaign_adgroups_report
 
+
 class DataBase(object):
     campaigns = []
     reports = {}
