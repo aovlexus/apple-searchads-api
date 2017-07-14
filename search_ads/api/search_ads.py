@@ -4,9 +4,9 @@ from datetime import datetime, timedelta
 import pandas as pd
 from tqdm import tqdm
 
-from search_ads.api.utils import api_get
-from search_ads.models.store_models import Campaign, AdGroup
-from search_ads.models.reports import _today, \
+from api.utils import api_get
+from models.store_models import Campaign, AdGroup
+from models.reports import _today, \
     get_campaign_report as _get_campaign_report, \
     get_campaign_keywords_report as _get_campaign_keywords_report, \
     get_campaign_searchterms_report as _get_campaign_searchterms_report, \
