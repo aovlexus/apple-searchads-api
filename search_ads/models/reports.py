@@ -7,7 +7,10 @@ from search_ads.api.utils import api_post
 
 
 def _today():
-    return datetime.now().strftime("%Y-%m-%d")
+    return format_time(datetime.now())
+
+def format_time(time):
+    return time.strftime("%Y-%m-%d")
 
 
 def get_campaign_adgroups_report(campaign,

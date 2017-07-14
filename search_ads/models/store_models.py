@@ -131,7 +131,7 @@ class AdGroup(Synchronizable, AppleSerializable):
                                  serialized object as arg
         :param verbose: Verbosity
         """
-        if force_sync or super().synchronize(self,
+        if force_sync or Synchronizable.synchronize(self,
                                              save_callback=save_callback):
             keywords_export = []
             for keyword in self.keywords:
@@ -266,7 +266,7 @@ class Campaign(Synchronizable, AppleSerializable):
                                  serialized object as arg
         :param verbose: Verbosity
         """
-        if force_sync or super().synchronize(self,
+        if force_sync or Synchronizable.synchronize(self,
                                              save_callback=save_callback):
             if cascade:
                 for ad_group in self.ad_groups:
