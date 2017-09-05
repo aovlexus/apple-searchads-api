@@ -1,3 +1,5 @@
+FORKED FROM https://github.com/BendingSpoons/searchads-api
+
 # Apple Search Ads Python API
 ## Install instructions
 
