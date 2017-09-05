@@ -4,6 +4,8 @@ import os
 import requests
 from decouple import config
 
+from tempfile import NamedTemporaryFile
+
 
 @contextlib.contextmanager
 def set_env(**environ):
@@ -33,27 +35,55 @@ def api_call(endpoint, headers={}, json_data={}, method=requests.get,
              api_version='v1', limit=1000, offset=0, org_id=None,
              verbose=False):
     endpoint = "{}/{}".format(api_version, endpoint)
-    #print("Endpoint:", endpoint)
-    #print()
-    #print("Data:", json_data)
-    #print()
-    call_kwargs = {
-        "cert": (
-            config('SEARCH-ADS-PEM'),
-            config('SEARCH-ADS-KEY')
-        ),
-        "headers": headers,
-    }
-    if json_data:
-        call_kwargs['json'] = json_data
-    if org_id:
-        call_kwargs['headers']["Authorization"] = "orgId={org_id}".format(
-            org_id=org_id)
-    req = method(
-        "https://api.searchads.apple.com/api/{endpoint}".format(
-            endpoint=endpoint),
-        **call_kwargs
-    )
+    # print("Endpoint:", endpoint)
+    # print("Data:", json_data)
+
+    temp_pem = NamedTemporaryFile(suffix='.pem')
+    temp_key = NamedTemporaryFile(suffix='.key')
+
+    pem_env_var = config('SEARCH-ADS-PEM')
+    key_env_var = config('SEARCH-ADS-KEY')
+
+    try:
+        if pem_env_var.endswith('.pem'):  # env is the name of file
+            call_kwargs = {
+                "cert": (
+                    pem_env_var,
+                    key_env_var
+                ),
+                "headers": headers,
+            }
+        else:   # env var is the key explicit
+            pem_lines = pem_env_var.split("\\n")
+            temp_pem.writelines(["%s\n" % item for item in pem_lines])
+            temp_pem.flush()  # ensure all data written
+
+            key_lines = key_env_var.split("\\n")
+            temp_key.writelines(["%s\n" % item for item in key_lines])
+            temp_key.flush()  # ensure all data written
+
+            call_kwargs = {
+                "cert": (
+                    temp_pem.name,
+                    temp_key.name
+                ),
+                "headers": headers,
+            }
+        if json_data:
+            call_kwargs['json'] = json_data
+        if org_id:
+            call_kwargs['headers']["Authorization"] = "orgId={org_id}".format(
+                org_id=org_id)
+        req = method(
+            "https://api.searchads.apple.com/api/{endpoint}".format(
+                endpoint=endpoint),
+            **call_kwargs
+        )
+    finally:
+        # Automatically cleans up the file
+        temp_pem.close()
+        temp_key.close()
+
     if verbose:
         print(req.text)
     return req.json()

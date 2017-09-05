@@ -1,7 +1,7 @@
 __author__ = "Luca Giacomel"
 __credits__ = ["Luca Giacomel", "Marco Meneghelli"]
 __license__ = "GPL"
-__version__ = "0.2.4"
+__version__ = "0.2.5"
 __maintainer__ = "Luca Giacomel"
 __email__ = "luca.giacomel@gmail.com"
 
