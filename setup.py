@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='apple_search_ads',
-      version='0.2.5',
+      version='0.2.6',
       description='Python wrapper for Apple Search Ads APIs',
       url='https://github.com/aovlexus/apple-searchads-api',
       author='Luca Giacomel forked by Aleksnadr Usov',

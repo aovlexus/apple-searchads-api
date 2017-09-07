@@ -166,13 +166,19 @@ def _report(campaign=None,
         for granularity in row['granularity']:
             final_row = copy.copy(base)
             final_row.update(granularity)
-            output.append(convert_to_float_all_amounts_in_row(final_row))
+            output.append(convert_to_float_all_amounts_in_row(convert_to_str_all_ids_in_row(final_row)))
     return pd.DataFrame(output)
 
 
 def amount_to_float(amount):
     return float(amount['amount'])
 
+def convert_to_str_all_ids_in_row(row):
+    _row = copy.copy(row)
+    for field_name, value in _row.items():
+        if field_name[-2:] == "Id":
+            _row[field_name] = str(value)
+    return _row
 
 def convert_to_float_all_amounts_in_row(row):
     _row = copy.copy(row)
